@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "target": "ESNext",
     "allowImportingTsExtensions": true,
     "noEmit": true,
@@ -16,7 +16,10 @@
       "styles/*": ["styles/*"],
       "utils/*": ["utils/*"],
       "pages/*": ["pages/*"],
-      "providers/*": ["providers/*"]
+      "widgets/*": ["widgets/*"],
+      "providers/*": ["providers/*"],
+      "shared/*": ["shared/*"],
+      "@assets/*": ["shared/assets/*"],
     },
     "types": ["vite/client", "node"]
   }
