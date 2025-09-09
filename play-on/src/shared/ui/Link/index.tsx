@@ -11,9 +11,8 @@ export const Link = ({ to, children, ...props }: AppLinkProps) => {
   const href = typeof to === 'string' && to in routesMasks 
     ? routesMasks[to as RouteKeys].create() 
     : to;
-
   return (
-    <RouterLink to={href} {...props}>
+    <RouterLink to={href} {...props} >
       {children}
     </RouterLink>
   );
