@@ -4,10 +4,10 @@ import { Box } from "@mui/material"
 import styles from './styles.module.css'
 import { HeaderMain } from "./HeaderMain"
 import { HeaderAction } from "./HeaderAction"
-import { RouteObject } from "react-router-dom"
+import { RouteConfig } from "shared/types"
 
 type HeaderProps = {
-  routes: RouteObject[];
+  routes: RouteConfig[];
 }
 
 export const Header = memo(({ routes }: HeaderProps) => {

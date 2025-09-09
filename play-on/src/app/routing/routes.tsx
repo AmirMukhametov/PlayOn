@@ -8,6 +8,7 @@ import { MoviesPage } from 'pages/movies/ui';
 import { ProfilePage } from 'pages/profile';
 import { SeriesPage } from 'pages/series';
 import { TopPage } from 'pages/top';
+import { CommingSoonPage } from 'pages/commingSoon';
 
 
 export const routes: RouteObject[] = [
@@ -44,6 +45,10 @@ export const routes: RouteObject[] = [
       {
         path: routesMasks.profile.mask,
         element: <ProfilePage />,
+      },
+      {
+        path: routesMasks.commingSoon.mask,
+        element: <CommingSoonPage />,
       },
       {
         path: '*',

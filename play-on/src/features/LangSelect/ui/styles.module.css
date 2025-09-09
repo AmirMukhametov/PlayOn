@@ -16,6 +16,9 @@
 }
 
 .language__text{
+    font-weight: var(--fw-bold);
+    font-size: 12px;
+    color: var(--white);
     width: min-content;
 }
 

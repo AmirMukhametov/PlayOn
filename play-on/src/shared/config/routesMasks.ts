@@ -26,6 +26,10 @@ export const routesMasks = {
   profile: {
     mask: '/profile',
     create: () => '/profile',
+  },
+  commingSoon: {
+    mask: 'commingSoon',
+    create: ()=> '/commingSoon'
   }
 };
 
