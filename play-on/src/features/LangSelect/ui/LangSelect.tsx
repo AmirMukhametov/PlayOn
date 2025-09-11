@@ -1,6 +1,6 @@
 import { Button } from 'shared/ui';
-import WorldIcon from '@assets/images/world.svg';
-import ArrowDownIcon from '@assets/images/arrowDown.svg';
+import { ReactComponent as WorldIcon } from '@assets/images/world.svg';
+import { ReactComponent as ArrowDownIcon } from '@assets/images/arrowDown.svg';
 
 import styles from './styles.module.css';
 import { memo } from 'react';
