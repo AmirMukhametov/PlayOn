@@ -1,6 +1,6 @@
 import { Box } from "@mui/material"
 import { Logo } from "shared/ui/Logo"
-import { Nav } from "../Nav"
+import { Nav } from "../../../../shared/ui/Nav"
 import styles from './styles.module.css'
 import { memo } from "react"
 

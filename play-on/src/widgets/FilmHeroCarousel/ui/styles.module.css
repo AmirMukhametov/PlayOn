@@ -1,0 +1,34 @@
+.carousel__film {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  box-sizing: border-box;
+  transform-origin: center center;
+}
+.carousel__filmInner {
+  width: 100%;
+  height: 100%;
+  transition: transform 200ms cubic-bezier(.22,.9,.35,1), opacity 100ms ease;
+  will-change: transform, opacity;
+  transform-origin: center center; 
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* z-index / тени / визуал */
+.carousel__film--center { 
+    z-index: 20;
+}
+.carousel__film--center .carousel__filmInner { box-shadow: 0 20px 40px rgba(0,0,0,0.18); }
+
+.carousel__film--adjacent { z-index: 10; }
+.carousel__film--far { z-index: 5; opacity: 0.9; pointer-events: none; }
+
+
+.carousel__viewport {
+  height: 610px; 
+  overflow: visible;
+}
+
+

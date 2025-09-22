@@ -12,7 +12,7 @@ import { CommingSoonPage } from 'pages/commingSoon';
 import { Watched } from 'pages/watched';
 import { Favorites } from 'pages/favorites';
 import { ConnectedDevices } from 'features/ConnectedDevices';
-
+import { FilmAboutPage } from 'pages/filmAbout';
 
 export const routes: RouteObject[] = [
   {
@@ -37,10 +37,11 @@ export const routes: RouteObject[] = [
           { path: 'settings', element: <CommingSoonPage /> },
         ],
       },
-      {path: routesMasks.commingSoon.mask, element: <CommingSoonPage/>},
+      { path: routesMasks.commingSoon.mask, element: <CommingSoonPage /> },
       { path: routesMasks.alreadyWatched.mask, element: <Watched /> },
       { path: routesMasks.like.mask, element: <Favorites /> },
       { path: '*', element: <Navigate to={routesMasks.main.mask} replace /> },
+      { path: routesMasks.filmAbout.mask, element: <FilmAboutPage />,},
     ],
   },
 ];

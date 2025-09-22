@@ -47,3 +47,8 @@ input, input:focus{
   outline: none;
   font-family: "Poppins", sans-serif;
 }
+
+.slick-track{
+  display: flex;
+  align-items: center;
+}

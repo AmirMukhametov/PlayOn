@@ -6,6 +6,10 @@ import { StoreButton } from "./ui/StoreButton/StoreButton"
 import { HelpPanel } from "./ui/HeplPanel"
 
 export const Footer = () => {
+    // film.getActors()
+    // film.getDirectors()
+    // film.getTrailer()
+    // film.getMovieInfo()
     return (
         <footer >
             <Container>
