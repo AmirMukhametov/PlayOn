@@ -18,4 +18,6 @@ export const routesMasks = {
   like: { mask: '/like', create: () => '/like' },
 
   commingSoon: { mask: '/commingSoon', create: () => '/commingSoon' },
+  filmAbout: { mask: '/filmAbout/:id', create: (id: number) => `/filmAbout/${id}`},
+
 };

@@ -12,6 +12,10 @@ body {
   text-transform: none;
 }
 
+p,span, h1,h2,h3,h4,h5,h6{
+  margin: 0;
+  padding: 0;
+}
 
 ul,
 ol {
@@ -46,4 +50,9 @@ input, input:focus{
   border: none;
   outline: none;
   font-family: "Poppins", sans-serif;
+}
+
+.slick-track{
+  display: flex;
+  align-items: center;
 }

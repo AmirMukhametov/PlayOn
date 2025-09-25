@@ -1,18 +1,19 @@
-import { Outlet } from "react-router-dom"
-import { Header } from "widgets/Header"
-import { routesConfig } from "./routing/routesConfig"
-import { Footer } from "widgets/Footer"
-import { Container } from "shared/ui"
+import { Outlet } from "react-router-dom";
+import { Header } from "widgets/Header";
+import { routesConfig } from "./routing/routesConfig";
+import { Footer } from "widgets/Footer";
+import { PageWrapper } from "widgets/Layout/PageWrapper";
 
 function App() {
-
   return (
     <div className="app">
-      <Header routes={routesConfig}/>
-      <Container><Outlet /></Container>
-      <Footer/>
+      <Header routes={routesConfig} />
+      <PageWrapper>
+        <Outlet />
+      </PageWrapper>
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
