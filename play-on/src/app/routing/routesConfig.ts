@@ -21,3 +21,5 @@ export const routesConfig: RouteConfig[] = [
   },
   
 ];
+
+export const authRoutesConfig: RouteConfig[] = [];

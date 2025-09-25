@@ -1,5 +1,4 @@
 import { API_CONFIG } from './config'
-
 export abstract class BaseApi {
   protected baseUrl: string
   protected apiKey: string

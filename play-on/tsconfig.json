@@ -20,6 +20,7 @@
       "providers/*": ["providers/*"],
       "shared/*": ["shared/*"],
       "@assets/*": ["shared/assets/*"],
+      "features/*": ["features/*"]
     },
     "types": ["vite/client", "node"]
   }
