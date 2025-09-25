@@ -96,3 +96,5 @@ export class FilmFilters extends BaseApi {
         return genre ? genre.id : null;
     }
 }
+
+export const filmFiltersApi = new FilmFilters();

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { QueryClient } from '@tanstack/react-query';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
-import { createIDBPersister } from 'shared/lib/createIDBPersister'; // твой persister
+import { createIDBPersister } from 'shared/lib/createIDBPersister'; 
 import { ONE_DAY, FIVE_MIN } from 'shared/api/queryTimes';
 
 const queryClient = new QueryClient({

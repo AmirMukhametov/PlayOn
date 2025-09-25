@@ -1,11 +1,12 @@
 import { memo } from 'react';
 import styles from './styles.module.css'
+import { Button } from 'shared/ui';
 
 export const BuyButton = memo(() => {
   return (
-    <button className={styles.button}>
+    <Button className={styles.button}>
       Buy for 50$
-    </button>
+    </Button>
   );
 });
 

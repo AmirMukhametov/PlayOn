@@ -5,7 +5,7 @@ export type Genre = {
 
 export type Filtered = {
     countries?: number,
-    genres?: number,
+    genres?: number[],
     order?: "RATING" | "NUM_VOTE" | "YEAR",
     type?: "FILM" | "TV_SHOW" |  "TV_SERIES" | "MINI_SERIES" | "ALL",
     ratingFrom?: number,
