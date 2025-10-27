@@ -1,20 +1,25 @@
 export type Genre = {
-    id: number,
-    genre: string,
+  id: number,
+  genre: string,
+}
+
+export type Country = {
+  id: number,
+  country: string
 }
 
 export type Filtered = {
-    countries?: number,
-    genres?: number[],
-    order?: "RATING" | "NUM_VOTE" | "YEAR",
-    type?: "FILM" | "TV_SHOW" |  "TV_SERIES" | "MINI_SERIES" | "ALL",
-    ratingFrom?: number,
-    ratingTo? : number,
-    yearFrom? : number,
-    yearTo? : number,
-    imdbId? : number,
-    keyword? : string,
-    page? : number
+  countries?: number[],
+  genres?: number[],
+  order?: "RATING" | "NUM_VOTE" | "YEAR",
+  type?: "FILM" | "TV_SHOW" | "TV_SERIES" | "MINI_SERIES" | "ALL",
+  ratingFrom?: number,
+  ratingTo?: number,
+  yearFrom?: number,
+  yearTo?: number,
+  imdbId?: number,
+  keyword?: string,
+  page?: number
 }
 
 export type FilmPreview = {

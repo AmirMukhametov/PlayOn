@@ -1,10 +1,11 @@
 import { BaseApi } from "shared/api/baseApi";
-import { FilmResponse, Filtered, Genre } from "../types";
+import { Country, FilmResponse, Filtered, Genre } from "../types";
 
 export type FilmPreview = {
     kinopoiskId: number;
     posterUrl: string;
 };
+
 
 export class FilmFilters extends BaseApi {
 
@@ -22,9 +23,9 @@ export class FilmFilters extends BaseApi {
         return filters.genres;
     }
 
-    async getCountryIds(): Promise<number[]> {
+    async getCountryIds(): Promise<Country[]> {
         const filters = await this.getFilters();
-        return filters.countries.map(c => c.id);
+        return filters.countries;
     }
 
     async getFilmsWithFilters(filters: Filtered): Promise<FilmPreview[]> {
@@ -88,13 +89,13 @@ export class FilmFilters extends BaseApi {
         }
     }
 
-    async getGenreIdByName(genreName: string): Promise<number | null> {
-        const filters = await this.getFilters();
-        const genre = filters.genres.find(g =>
-            g.genre.toLowerCase() === genreName.toLowerCase()
-        );
-        return genre ? genre.id : null;
-    }
+    // async getGenreIdByName(genreName: string): Promise<number | null> {
+    //     const filters = await this.getFilters();
+    //     const genre = filters.genres.find(g =>
+    //         g.genre.toLowerCase() === genreName.toLowerCase()
+    //     );
+    //     return genre ? genre.id : null;
+    // }
 }
 
 export const filmFiltersApi = new FilmFilters();
