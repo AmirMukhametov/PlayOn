@@ -1,6 +1,6 @@
 import { memo, useMemo } from "react";
 import { CarouselBase } from "shared/ui/CarouselBase";
-import { MovieCard } from "entities/film/ui/MovieCard";
+import { MovieCard } from "shared/ui/MovieCard/MovieCard";
 import { FilmPreview } from "entities/filmCollection/types";
 import styles from "./styles.module.css";
 import { settings } from "../config";

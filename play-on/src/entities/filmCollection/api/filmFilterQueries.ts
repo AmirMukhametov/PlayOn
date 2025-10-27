@@ -1,6 +1,6 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query'
 import { filmFiltersApi } from './filmFilters'
-import { FilmPreview, Filtered, Genre } from '../types'
+import { Country, FilmPreview, Filtered, Genre } from '../types'
 
 export const useGenreIdsQuery = () =>
   useQuery<Genre[], Error>({
@@ -9,7 +9,7 @@ export const useGenreIdsQuery = () =>
   })
 
 export const useCountryIdsQuery = () =>
-  useQuery<number[], Error>({
+  useQuery<Country[], Error>({
     queryKey: ['filters', 'countryIds'],
     queryFn: () => filmFiltersApi.getCountryIds(),
   })
@@ -19,3 +19,12 @@ export const useFilmsWithFiltersQuery = (filters: Filtered) =>
     queryKey: ['films', 'filtered', filters],
     queryFn: () => filmFiltersApi.getFilmsWithFilters(filters),
   })
+
+export const useMovieFilters = (filters: Filtered) =>{
+  return useQuery<FilmPreview[], Error>(
+    {
+      queryKey: ['movieFilters', filters],
+      queryFn: () => filmFiltersApi.getFilmsWithFilters({type: "FILM", ...filters})
+    }
+  )
+}
