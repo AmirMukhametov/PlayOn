@@ -9,11 +9,11 @@ import styles from './styles.module.css'
 import { Loader } from "shared/ui/Loader/ui"
 
 interface IFilterPanel {
-    filterObj: UpdateFilters<FilmPreview[]>
+    filterObj: UpdateFilters
 }
 
 export const FilterPanel = ({ filterObj } : IFilterPanel) => {
-    const { data, isLoading, setFilters, filters } = useFilters<FilmPreview[]>(filterObj)
+    const { data, isLoading, setFilters, filters } = useFilters(filterObj)
     const updateFilters = (newPart: Partial<Filtered>) => {
         const newFilters = { ...filters, ...newPart }
         setFilters(newFilters)
@@ -25,9 +25,8 @@ export const FilterPanel = ({ filterObj } : IFilterPanel) => {
                 <CountryFilter onChange={(id) => updateFilters({ countries: [id] })} />
                 <GenreFilter onChange={(id) => updateFilters({ genres: [id] })} />
             </div>
-            <div className={styles.loader}>
-                <Loader loading={isLoading}><FilmList list={data ?? []} /></Loader>
-            </div>
+            <FilmList list={data ?? []} />
+            
         </div>
     )
 }
