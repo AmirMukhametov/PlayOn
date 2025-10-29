@@ -1,28 +1,36 @@
-import { useState } from "react";
-
-import { Filtered } from "entities/filmCollection/types";
-import { UseQueryResult } from "@tanstack/react-query";
 
 
-export type UpdateFilters<T> = (update: Partial<Filtered>) => UseQueryResult<T, Error>
+import { FilmPreview, Filtered } from "entities/filmCollection/types";
 
-export const useFilters = <T>(queryFunc: UpdateFilters<T>) => {
-    const [filters, setFilters] = useState<Filtered>({
-        yearFrom: 1000,
-        yearTo: 3000,
-        genres: [],
-        countries: []
-    });
+import { useInfiniteScroll } from "./useInfiniteScroll";
+import { UpdateFilters, usePagination } from "./usePagination";
+import { useFilterState } from "./useFilterState";
 
-    const updateFilters = (newPart: Partial<Filtered>) => {
-        setFilters(prev=>({...prev, ...newPart}))
-    }
+export const useFilters = (queryFunc: UpdateFilters) => {
+  const { filters, setFilters } = useFilterState()
+  const {
+    data,
+    isLoading,
+    hasMore,
+    onLoad,
+    resetPagination,
+    page: pages
+  } = usePagination(queryFunc, filters)
 
-    const {data, isLoading} = queryFunc(filters)
-    return{
-        data, 
-        isLoading,
-        filters,
-        setFilters: updateFilters
-    }
-}
+  const updateFilters = (newPart: Partial<Filtered>) => {
+    setFilters(newPart);
+    resetPagination()
+  };
+
+  useInfiniteScroll({ onLoad, isLoading, hasMore, });
+
+  return {
+    data,
+    isLoading,
+    filters,
+    setFilters: updateFilters,
+    loadMore: onLoad,
+    hasMore,
+    page: pages,
+  };
+};
