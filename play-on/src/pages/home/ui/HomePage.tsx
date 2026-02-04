@@ -16,7 +16,6 @@ export const HomePage = () => {
   const oscarWinnersQuery = useOscarWinners();
   const topPopularQuery = usePopularFilms();
 
-
   return (
     <>
       <FilmHeroCarousel films={topPopularQuery.data ?? []} />

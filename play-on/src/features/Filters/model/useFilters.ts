@@ -5,6 +5,7 @@ import { FilmPreview, Filtered } from "entities/filmCollection/types";
 import { useInfiniteScroll } from "./useInfiniteScroll";
 import { UpdateFilters, usePagination } from "./usePagination";
 import { useFilterState } from "./useFilterState";
+import { useFilterUrl } from "./useFilterUrl";
 
 export const useFilters = (queryFunc: UpdateFilters) => {
   const { filters, setFilters } = useFilterState()
@@ -16,6 +17,8 @@ export const useFilters = (queryFunc: UpdateFilters) => {
     resetPagination,
     page: pages
   } = usePagination(queryFunc, filters)
+
+  useFilterUrl(filters, setFilters)
 
   const updateFilters = (newPart: Partial<Filtered>) => {
     setFilters(newPart);

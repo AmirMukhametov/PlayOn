@@ -1,6 +1,7 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query'
 import { filmFiltersApi } from './filmFilters'
 import { Country, FilmPreview, Filtered, Genre } from '../types'
+import { FIVE_MIN } from 'shared/api/queryTimes'
 
 export const useGenreIdsQuery = () =>
   useQuery<Genre[], Error>({
@@ -20,11 +21,19 @@ export const useFilmsWithFiltersQuery = (filters: Filtered) =>
     queryFn: () => filmFiltersApi.getFilmsWithFilters(filters),
   })
 
-export const useMovieFilters = (filters: Filtered) =>{
-  return useQuery<FilmPreview[], Error>(
-    {
-      queryKey: ['movieFilters', filters],
-      queryFn: () => filmFiltersApi.getFilmsWithFilters({type: "FILM", ...filters})
-    }
-  )
+export const useCachedFilmsQuery = (filters: Filtered) => {
+  return useQuery<FilmPreview[], Error>({
+    queryKey: ['films', filters],
+    queryFn: () => filmFiltersApi.getFilmsWithFilters(filters),
+    staleTime: 0, 
+    gcTime: FIVE_MIN, 
+  });
+};
+
+export const useMovieFilters = (filters: Filtered) => {
+  return useCachedFilmsQuery({ type: "FILM", ...filters });
+};
+
+export const useSerialFilters = (filters: Filtered) =>{
+  return useCachedFilmsQuery({type: "TV_SERIES", ...filters});
 }

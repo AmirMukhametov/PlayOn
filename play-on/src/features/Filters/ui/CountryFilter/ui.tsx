@@ -3,11 +3,13 @@ import { UniversalFilter } from "../UniversalFilter";
 
 interface CountryFilterProps {
   onChange: (id: number | null) => void;
+  value: number | null
 }
 
-export const CountryFilter = ({ onChange }: CountryFilterProps) => (
+export const CountryFilter = ({ onChange, value }: CountryFilterProps) => (
   <UniversalFilter 
     config={countryFilterConfig}
     onChange={onChange}
+    value={value}
   />
 );

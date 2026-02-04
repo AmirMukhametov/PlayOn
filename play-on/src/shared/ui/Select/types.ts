@@ -20,4 +20,5 @@ export interface SelectProps {
   data: SelectOption[];
   name: string;
   onClick: (value: string) => void;
+  value? : string | null
 }

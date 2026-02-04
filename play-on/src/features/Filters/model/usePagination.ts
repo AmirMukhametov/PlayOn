@@ -64,3 +64,4 @@ export const usePagination = (queryFunc: UpdateFilters, filters: Filtered) => {
         page: pages,
     };
 }
+

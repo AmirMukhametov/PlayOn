@@ -11,15 +11,14 @@ type FilmCarouselProps = {
 };
 
 export const FilmCarousel = memo(({ films, title }: FilmCarouselProps) => {
-  const slides = useMemo(
-    () =>
-      films.map((film) => (
-        <div key={film.kinopoiskId} className={styles.carousel__film}>
-          <MovieCard id={film.kinopoiskId} src={film.posterUrl} />
-        </div>
-      )),
-    [films]
-  );
+  const slides =
+    films.map((film) => (
+      <div key={film.kinopoiskId} className={styles.carousel__film}>
+        <MovieCard id={film.kinopoiskId} src={film.posterUrl} />
+      </div>
+    ))
+
+
 
   return (
     <div className={styles.carousel__wrapper}>

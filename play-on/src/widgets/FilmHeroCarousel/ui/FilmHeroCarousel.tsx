@@ -16,7 +16,7 @@ type FilmHeroCarouselProps = {
 
 export const FilmHeroCarousel = memo(({ films }: FilmHeroCarouselProps) => {
   const { slides, setCenterIndex } = useFilmHeroCarousel(films);
-
+   console.log("Ререндер компонента")
   return (
     <div className={styles.carousel__wrapper}>
       <CarouselBase settings={{ ...heroSettings, afterChange: (current) => setCenterIndex(current) }}>

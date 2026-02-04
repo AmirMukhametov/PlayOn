@@ -12,6 +12,7 @@ const queryClient = new QueryClient({
       gcTime: ONE_DAY,   
       refetchOnWindowFocus: false,
       retry: 2,
+      structuralSharing: false,
     },
   },
 });
