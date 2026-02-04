@@ -8,6 +8,7 @@ export const useFilterState = () => {
         genres: [],
         countries: [],
     });
+
     const updateFilters = useCallback((newPart: Partial<Filtered>) => {
         setFilters(prev => ({ ...prev, ...newPart }));
     }, []);

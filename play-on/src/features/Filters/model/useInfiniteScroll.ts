@@ -11,7 +11,7 @@ export const useInfiniteScroll = ({onLoad, isLoading, hasMore}: InfiniteScrollPr
     const handler = () => {
       const { scrollHeight, scrollTop } = document.documentElement;
       const windowHeight = window.innerHeight;
-      const closeToBottom = scrollHeight - scrollTop - windowHeight < 500;
+      const closeToBottom = scrollHeight - scrollTop - windowHeight < windowHeight * 2;
 
       if (closeToBottom && !isLoading && hasMore) {
         onLoad();
@@ -20,5 +20,5 @@ export const useInfiniteScroll = ({onLoad, isLoading, hasMore}: InfiniteScrollPr
 
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
-  }, [onLoad]);
+  }, [onLoad, isLoading, hasMore]);
 }
