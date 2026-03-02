@@ -113,3 +113,21 @@
 .help:hover {
     text-decoration: underline;
 }
+
+.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.success {
+  color: #51cf66;
+  background: rgba(81, 207, 102, 0.1);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+}
