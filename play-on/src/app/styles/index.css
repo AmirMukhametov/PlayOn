@@ -56,3 +56,11 @@ input, input:focus{
   display: flex;
   align-items: center;
 }
+
+.allplay__poster{
+    height: 100% !important;
+}
+
+.topAdPad{
+    display: none !important;
+}

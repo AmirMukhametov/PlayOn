@@ -1,1 +1,0 @@
-export {FilmAboutPage} from './FilmAboutPage'

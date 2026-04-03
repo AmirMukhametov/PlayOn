@@ -1,1 +1,1 @@
-export {FilmAboutPage} from './ui'
+export {FilmAboutPage} from './FilmAboutPage'

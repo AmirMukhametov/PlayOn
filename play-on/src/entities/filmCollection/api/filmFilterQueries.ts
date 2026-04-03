@@ -14,7 +14,7 @@ export const useCountryIdsQuery = () =>
     queryKey: ['filters', 'countryIds'],
     queryFn: () => filmFiltersApi.getCountryIds(),
   })
-
+  
 export const useFilmsWithFiltersQuery = (filters: Filtered) =>
   useQuery<FilmPreview[], Error>({
     queryKey: ['films', 'filtered', filters],

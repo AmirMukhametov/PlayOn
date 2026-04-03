@@ -9,6 +9,7 @@ export interface Movie {
   ratingAgeLimits: string
   description: string
   posterUrl: string
+  logoUrl: string
 }
 
 export interface MovieFullData {
@@ -76,4 +77,25 @@ export interface StaffPerson {
     posterUrl: string;
     professionText: string;
     professionKey: string;
+}
+
+
+export type Trailer = {
+    url: string;
+    name: string;
+};
+
+export interface SimularMovie{
+  total: number;
+  items: SimularMovieItem[];
+}
+
+export interface SimularMovieItem {
+  filmId: number;
+  nameRu: string;
+  nameEn: string;
+  nameOriginal: string;
+  posterUrl: string;
+  posterUrlPreview: string;
+  relationType: string;
 }
