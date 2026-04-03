@@ -6,6 +6,7 @@ import { INFO } from "./config"
 import styles from './styles.module.css'
 
 
+
 export const MoviesPage = () => {
     return (
         <section className={styles.movie}>

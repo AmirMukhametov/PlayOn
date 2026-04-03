@@ -1,7 +1,7 @@
 import { BaseApi } from "shared/api/baseApi";
-import { Movie, MovieFullData, VideoData, StaffPerson } from "../types"
+import { MovieFullData, VideoData, StaffPerson, Trailer, SimularMovie } from "../types"
 
-export class Film extends BaseApi {
+export class FilmApi extends BaseApi {
     id: number
 
     constructor(id: number) {
@@ -10,90 +10,25 @@ export class Film extends BaseApi {
     }
 
     async getMovieData(): Promise<MovieFullData> {
-        try { 
-            return await this.fetchWithAuth(`/v2.2/films/${this.id}`)
-        } catch (error) {
-            return this.handleApiError(error)
-        }
+        return await this.fetchWithAuth(`/v2.2/films/${this.id}`)
+
     }
-
-    async getMovieInfo(): Promise<Movie> {
-        try {
-            const movieData = await this.getMovieData();
-
-            return {
-                kinopoiskId: movieData.kinopoiskId,
-                nameRu: movieData.nameRu,
-                nameEn: movieData.nameEn,
-                ratingKinopoisk: movieData.ratingKinopoisk,
-                year: movieData.year,
-                genres: movieData.genres,
-                filmLength: movieData.filmLength,
-                ratingAgeLimits: movieData.ratingAgeLimits?.replace("age", "") + "+",
-                description: movieData.description,
-                posterUrl: movieData.posterUrl,
-            };
-        } catch (error) {
-            return this.handleApiError(error)
-        }
-    }
-
-    async getTrailer(): Promise<String[]> {
-        try {
-            const data: VideoData = await this.fetchWithAuth(`/v2.2/films/${this.id}/videos`)
-            const info = data.items[0]
-            return [info.url, info.name]
-        } catch (error) {
-            return this.handleApiError(error)
-        }
+    async getTrailer(): Promise<Trailer | null> {
+        const data: VideoData = await this.fetchWithAuth(`/v2.2/films/${this.id}/videos`)
+        // console.log(data)
+        const info = data.items[0]
+        if (!info) return null;
+        return { url: info.url, name: info.name };
     }
 
     async getStaff(): Promise<StaffPerson[]> {
-        try {
-            return await this.fetchWithAuth(`/v1/staff?filmId=${this.id}`)
-        } catch (error) {
-            return this.handleApiError(error)
-        }
+        return await this.fetchWithAuth(`/v1/staff?filmId=${this.id}`)
     }
 
-    async getDirectors(): Promise<{ nameEn: string; nameRu: string }[]> {
-        try {
-            const staffData = await this.getStaff();
-            const directors: { nameEn: string; nameRu: string }[] = [];
-            
-            for (const person of staffData) {
-                if (person.professionKey === 'DIRECTOR') {
-                    directors.push({ nameEn: person.nameEn, nameRu: person.nameRu });
-                    if (directors.length >= 3) break;
-                }
-            }
-            
-            return directors;
-        } catch (error) {
-            return this.handleApiError(error)
-        }
-    }
-
-    async getActors(): Promise<{ nameEn: string; nameRu: string }[]> {
-        try {
-            const staffData = await this.getStaff();
-            const actors: { nameEn: string; nameRu: string }[] = [];
-            
-            for (const person of staffData) {
-                if (person.professionKey === 'ACTOR') {
-                    actors.push({ nameEn: person.nameEn, nameRu: person.nameRu });
-                    if (actors.length >= 6) break;
-                }
-            }
-            
-            return actors;
-        } catch (error) {
-            return this.handleApiError(error)
-        }
-    }
-
-    private handleApiError(error: unknown): never {
-        console.error('API Error:', error)
-        throw new Error('Failed to fetch movie data')
+    async getSimularMovie(): Promise<SimularMovie> {
+        const data = await this.fetchWithAuth(`/v2.2/films/${this.id}/similars`)
+        // console.log(data)
+        return data
     }
 }
+

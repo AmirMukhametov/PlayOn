@@ -2,22 +2,23 @@ import { API_CONFIG } from './config'
 
 export abstract class BaseApi {
   protected baseUrl: string
-  protected apiKey: string
 
   constructor() {
     this.baseUrl = API_CONFIG.KINOPOISK.BASE_URL
-    this.apiKey = API_CONFIG.KINOPOISK.API_KEY
   }
 
   protected async fetchWithAuth(url: string, options: RequestInit = {}) {
-    const response = await fetch(`${this.baseUrl}${url}`, {
-      method: 'GET',
+    const cleanUrl = url.replace(/^\/+/, '')
+    const [path, query] = cleanUrl.split('?')
+    const queryString = query ? `&${query}` : ''
+    const apiUrl = `${this.baseUrl}?path=${encodeURIComponent(path)}${queryString}`
+
+    const response = await fetch(apiUrl, {
+      ...options,
       headers: {
-        'X-API-KEY': this.apiKey,
         'Content-Type': 'application/json',
         ...options.headers,
       },
-      ...options,
     })
 
     if (!response.ok) {
@@ -27,3 +28,4 @@ export abstract class BaseApi {
     return response.json()
   }
 }
+
